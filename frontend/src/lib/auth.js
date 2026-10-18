@@ -1,0 +1,176 @@
+// ==========================================================================
+// BAYTORA AUTHENTICATION & USER MANAGEMENT
+// ==========================================================================
+
+export const SEED_USERS = {
+  admin: {
+    id: 'user_admin_01',
+    name: 'Admin Baytora',
+    email: 'Admin@Baytora',
+    altEmail: 'admin@baytora.com',
+    password: '12345678',
+    role: 'admin',
+    avatar: 'A',
+    badge: 'Super Admin',
+    phone: '+1 (404) 555-0199',
+  },
+  agent: {
+    id: 'user_agent_01',
+    name: 'Emily Carter',
+    email: 'emily@baytora.com',
+    password: '12345678',
+    role: 'agent',
+    avatar: 'E',
+    badge: 'Certified Broker',
+    phone: '+1 (404) 555-0144',
+  },
+  user: {
+    id: 'user_client_01',
+    name: 'Sarah Jenkins',
+    email: 'sarah.j@example.com',
+    password: '12345678',
+    role: 'user',
+    avatar: 'S',
+    badge: 'Verified Buyer',
+    phone: '+1 (813) 555-0182',
+  },
+};
+
+export const DEMO_ACCOUNTS = SEED_USERS;
+
+const STORAGE_KEY = 'baytora_current_user';
+
+export function getCurrentUser() {
+  if (typeof window === 'undefined') return null;
+  try {
+    let raw = localStorage.getItem(STORAGE_KEY);
+    // If not found, check legacy key once and migrate
+    if (!raw) {
+      const legacy = localStorage.getItem('luxterra_current_user');
+      if (legacy) {
+        localStorage.setItem(STORAGE_KEY, legacy);
+        localStorage.removeItem('luxterra_current_user');
+        raw = legacy;
+      }
+    }
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (err) {
+    return null;
+  }
+}
+
+export function saveUserSession(user) {
+  if (typeof window === 'undefined') return;
+  try {
+    if (user) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+      // Clean legacy keys
+      localStorage.removeItem('luxterra_current_user');
+      localStorage.removeItem('rentel_user');
+      localStorage.removeItem('user');
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem('luxterra_current_user');
+      localStorage.removeItem('rentel_user');
+      localStorage.removeItem('user');
+    }
+    window.dispatchEvent(new Event('lux-auth-changed'));
+  } catch (err) {
+    console.error('Error saving user session:', err);
+  }
+}
+
+export async function loginUser({ email, password }) {
+  // Simulate network delay for natural feel
+  await new Promise((resolve) => setTimeout(resolve, 500));
+
+  const cleanEmail = (email || '').trim().toLowerCase();
+  const cleanPassword = (password || '').trim();
+
+  // Match Admin: Admin@Baytora, admin@baytora.com, or admin
+  if (
+    cleanEmail === 'admin@baytora' || 
+    cleanEmail === 'admin@baytora.com' || 
+    cleanEmail === 'admin'
+  ) {
+    if (cleanPassword !== '12345678') {
+      throw new Error('Incorrect password. For Admin, please use: 12345678');
+    }
+    const user = { ...SEED_USERS.admin, lastLogin: new Date().toISOString() };
+    saveUserSession(user);
+    return { success: true, user };
+  }
+
+  // Match Agent
+  if (cleanEmail === SEED_USERS.agent.email.toLowerCase() || cleanEmail === 'agent') {
+    if (cleanPassword && cleanPassword !== '12345678') {
+      throw new Error('Incorrect password. Please use: 12345678');
+    }
+    const user = { ...SEED_USERS.agent, lastLogin: new Date().toISOString() };
+    saveUserSession(user);
+    return { success: true, user };
+  }
+
+  // Match Buyer (Sarah)
+  if (cleanEmail === SEED_USERS.user.email.toLowerCase()) {
+    if (cleanPassword && cleanPassword !== '12345678') {
+      throw new Error('Incorrect password. Please use: 12345678');
+    }
+    const user = { ...SEED_USERS.user, lastLogin: new Date().toISOString() };
+    saveUserSession(user);
+    return { success: true, user };
+  }
+
+  // Generic sign in
+  if (!cleanPassword || cleanPassword.length < 6) {
+    throw new Error('Password must be at least 6 characters.');
+  }
+
+  const nameParts = cleanEmail.split('@')[0].replace(/[._-]/g, ' ');
+  const formattedName = nameParts.charAt(0).toUpperCase() + nameParts.slice(1);
+
+  const user = {
+    id: 'user_' + Date.now(),
+    name: formattedName || 'Client User',
+    email: cleanEmail,
+    role: 'user',
+    avatar: (formattedName || 'U').charAt(0).toUpperCase(),
+    badge: 'Verified Member',
+    lastLogin: new Date().toISOString(),
+  };
+
+  saveUserSession(user);
+  return { success: true, user };
+}
+
+export async function registerUser({ name, email, phone, role = 'user' }) {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+
+  const cleanEmail = email.trim().toLowerCase();
+  const cleanName = name.trim();
+
+  const user = {
+    id: 'user_' + Date.now(),
+    name: cleanName,
+    email: cleanEmail,
+    phone: phone?.trim() || '',
+    role: role === 'agent' ? 'agent' : 'user',
+    avatar: cleanName.charAt(0).toUpperCase() || 'U',
+    badge: role === 'agent' ? 'Registered Agent' : 'Member',
+    registeredAt: new Date().toISOString(),
+  };
+
+  saveUserSession(user);
+  return { success: true, user };
+}
+
+export function logoutUser() {
+  saveUserSession(null);
+}
+
+export function quickDemoLogin(role = 'admin') {
+  const account = DEMO_ACCOUNTS[role] || DEMO_ACCOUNTS.user;
+  saveUserSession({ ...account, lastLogin: new Date().toISOString() });
+  return account;
+}

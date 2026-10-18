@@ -1,0 +1,181 @@
+/* ===================================================
+   SHOWCASE BANNER SECTION (SCROLL ZOOM ARCHITECTURE)
+   =================================================== */
+
+.showcase-banner-section {
+  position: relative;
+  width: 100vw;
+  margin-bottom: -85px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.showcase-banner-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 46vw, 620px);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f1f2f4;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.08);
+  isolation: isolate;
+  user-select: none;
+}
+
+/* Full Bleed Scaled Image with hardware acceleration */
+.showcase-banner-img {
+  position: absolute;
+  inset: -6% -6%;
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  object-position: center center;
+  transform-origin: center center;
+  will-change: transform;
+  opacity: 1;
+  pointer-events: none;
+  display: block;
+  z-index: 1;
+}
+
+/* Subtle architectural vignette overlay */
+.showcase-banner-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 17, 18, 0.05) 0%,
+    rgba(17, 17, 18, 0) 25%,
+    rgba(17, 17, 18, 0) 70%,
+    rgba(17, 17, 18, 0.18) 100%
+  );
+  z-index: 2;
+}
+
+/* Minimalist Glass Pill Badge */
+.showcase-banner-badge {
+  position: absolute;
+  bottom: 22px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  z-index: 3;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.showcase-banner-badge:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.showcase-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #7f51ff;
+  box-shadow: 0 0 8px rgba(127, 81, 255, 0.7);
+  flex-shrink: 0;
+}
+
+.showcase-badge-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111112;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   =================================================== */
+
+@media (max-width: 1024px) {
+  .showcase-banner-section {
+    margin-bottom: -85px;
+  }
+
+  .showcase-banner-frame {
+    height: clamp(300px, 44vw, 520px);
+  }
+
+  .showcase-banner-badge {
+    bottom: 18px;
+    right: 18px;
+    padding: 7px 14px;
+  }
+
+  .showcase-badge-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .showcase-banner-section {
+    width:100vw;
+    margin-bottom: -85px;
+  }
+
+  .showcase-banner-frame {
+    height: clamp(260px, 48vw, 380px);
+    border-radius: 3px;
+  }
+
+  .showcase-banner-badge {
+    bottom: 14px;
+    right: 14px;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .showcase-badge-text {
+    font-size: 11px;
+  }
+
+  .showcase-badge-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .showcase-banner-section {
+    width: 100vw;
+   margin-bottom: -85px;
+  }
+
+  .showcase-banner-frame {
+    height: clamp(220px, 56vw, 290px);
+  }
+
+  .showcase-banner-badge {
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+  }
+
+  .showcase-badge-text {
+    font-size: 10px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .showcase-banner-img {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .showcase-banner-skeleton {
+    animation: none;
+  }
+}

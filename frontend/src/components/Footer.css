@@ -1,0 +1,219 @@
+/* ==========================================================================
+   LUXTERRA DARK FOOTER STYLES
+   ========================================================================== */
+
+.footer {
+  background: #111112;
+  color: #ffffff;
+  padding: 85px 0 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  gap: 50px;
+  padding-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Col 1 & 3: Menus */
+.footer-col-header {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.2px;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-link {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  transition: color 0.15s ease, transform 0.15s ease;
+  display: inline-block;
+}
+
+.footer-nav-link:hover {
+  color: #7f51ff;
+  transform: translateX(2px);
+}
+
+/* Social Row */
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.footer-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-social-btn:hover {
+  background: #7f51ff;
+  border-color: #7f51ff;
+  transform: translateY(-2px);
+}
+
+/* Col 2: Center Newsletter */
+.footer-newsletter-col {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+
+.footer-newsletter-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  max-width: 380px;
+  margin-bottom: 24px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 380px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 0 12px;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+.footer-newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-newsletter-submit {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  transition: color 0.15s ease;
+}
+
+.footer-newsletter-submit:hover {
+  color: #7f51ff;
+}
+
+/* Col 3: Pages & Contact */
+.footer-contact-info {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-contact-item {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-contact-item:hover {
+  color: #7f51ff;
+}
+
+/* Big Brand Watermark Text */
+.footer-brand-watermark {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  margin-top: 20px;
+}
+
+.footer-watermark-text {
+  font-size: clamp(80px, 16vw, 240px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  margin: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.03) 80%, rgba(17, 17, 18, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-newsletter-col {
+    order: -1;
+  }
+}

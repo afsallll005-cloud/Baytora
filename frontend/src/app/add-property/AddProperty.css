@@ -1,0 +1,429 @@
+/* ==========================================================================
+   ADD PROPERTY - LOCATION MARKED AREA STYLES
+   ========================================================================== */
+
+.location-marker-card {
+  background: #ffffff;
+  border: 1px solid #e7e7e9;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease;
+}
+
+.location-marker-card:hover {
+  border-color: #111112;
+}
+
+/* Card Header */
+.marker-card-header {
+  padding: 18px 20px;
+  background: #fbfbfb;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.marker-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marker-icon-badge {
+  width: 32px;
+  height: 32px;
+  background: #111112;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.marker-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111112;
+  margin: 0 0 2px 0;
+  letter-spacing: -0.3px;
+}
+
+.marker-card-subtitle {
+  font-size: 0.82rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0;
+}
+
+.marker-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Toolbar Controls */
+.marker-toolbar {
+  padding: 12px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.marker-city-presets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.preset-chip-btn {
+  padding: 4px 10px;
+  background: #f7f7f8;
+  border: 1px solid #e7e7e9;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #111112;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-chip-btn:hover {
+  background: #111112;
+  color: #ffffff;
+  border-color: #111112;
+}
+
+.preset-chip-btn.active {
+  background: #7f51ff;
+  color: #ffffff;
+  border-color: #7f51ff;
+  font-weight: 600;
+}
+
+.marker-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marker-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 1px solid #e7e7e9;
+  background: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111112;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.marker-action-btn:hover {
+  background: #f7f7f8;
+  border-color: #111112;
+}
+
+.marker-action-btn.active {
+  background: #111112;
+  color: #ffffff;
+  border-color: #111112;
+}
+
+.marker-locate-btn {
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+  color: #7c3aed;
+}
+
+.marker-locate-btn:hover {
+  background: #7f51ff;
+  color: #ffffff;
+  border-color: #7f51ff;
+}
+
+/* Interactive Map Area Container */
+.marker-map-stage {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-color: #191a1a;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+}
+
+/* Architectural Grid & Map Graphic */
+.marker-grid-canvas {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.marker-map-tiles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  filter: contrast(1.05) brightness(0.95);
+  pointer-events: none;
+}
+
+/* Map Overlay Crosshair lines */
+.crosshair-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(127, 81, 255, 0.35);
+  pointer-events: none;
+}
+
+.crosshair-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(127, 81, 255, 0.35);
+  pointer-events: none;
+}
+
+/* Animated Pin Marker */
+.marked-pin-wrapper {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  transition: left 0.12s cubic-bezier(0.2, 0, 0, 1), top 0.12s cubic-bezier(0.2, 0, 0, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.marked-pin-bubble {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: #7f51ff;
+  border: 3px solid #ffffff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 10px 24px rgba(127, 81, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marked-pin-icon {
+  transform: rotate(45deg);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marked-pin-pulse {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 6px;
+  background: rgba(127, 81, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 12px 6px rgba(127, 81, 255, 0.4);
+  animation: pulse-shadow 2s infinite ease-out;
+}
+
+@keyframes pulse-shadow {
+  0% {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.6);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(-50%) scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.marked-pin-tooltip {
+  margin-top: 6px;
+  background: #111112;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Instructions Banner on map */
+.marker-map-hint {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  background: rgba(17, 17, 18, 0.82);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hint-dot {
+  width: 7px;
+  height: 7px;
+  background: #7f51ff;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Zoom controls inside map */
+.marker-map-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+
+.map-control-btn {
+  width: 34px;
+  height: 34px;
+  background: #ffffff;
+  border: 1px solid #e7e7e9;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111112;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.15s ease;
+}
+
+.map-control-btn:hover {
+  background: #111112;
+  color: #ffffff;
+  border-color: #111112;
+}
+
+/* Satellite Live Embed */
+.marker-embed-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Coordinates Bottom Fine-Tuning Bar */
+.marker-footer-bar {
+  padding: 16px 20px;
+  background: #fbfbfb;
+  border-top: 1px solid #eaeaea;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.coord-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coord-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.coord-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e7e7e9;
+  border-radius: 2px;
+  background: #ffffff;
+  padding: 0 10px;
+  transition: border-color 0.15s;
+}
+
+.coord-input-wrap:focus-within {
+  border-color: #111112;
+}
+
+.coord-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #111112;
+  font-family: inherit;
+}
+
+.coord-suffix {
+  font-size: 0.78rem;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .marker-footer-bar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .marker-map-stage {
+    height: 300px;
+  }
+}

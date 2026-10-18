@@ -1,0 +1,331 @@
+
+/* =========================================
+   PROPERTY STATS SECTION (LUXTERRA STYLE)
+========================================= */
+
+.property-stats-section {
+  position: relative;
+  width: min(1356px, calc(100% - 64px));
+  margin: 70px auto;
+  padding: 90px 40px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #111112;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+/* Background image */
+.property-stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(17, 17, 18, 0.98) 0%,
+      rgba(17, 17, 18, 0.92) 50%,
+      rgba(17, 17, 18, 0.97) 100%
+    ),
+    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+/* Subtle dark overlay */
+.property-stats-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* =========================================
+   INNER CONTAINER
+========================================= */
+
+.property-stats-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   EYEBROW
+========================================= */
+
+.property-stats-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.property-stats-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.property-stats-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #7f51ff;
+  box-shadow: 0 0 0 3px rgba(127, 81, 255, 0.2);
+}
+
+.property-stats-eyebrow-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   MAIN HEADING
+========================================= */
+
+.property-stats-heading {
+  margin: 0 0 68px;
+  color: #ffffff;
+  text-align: center;
+  font-size: clamp(28px, 2.4vw, 44px);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -1.8px;
+}
+
+/* =========================================
+   STATS GRID
+========================================= */
+
+.property-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  width: 100%;
+}
+
+.property-stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 0 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.property-stat-item:first-child {
+  padding-left: 60px;
+}
+
+.property-stat-item:last-child {
+  padding-right: 20px;
+  border-right: none;
+}
+
+/* Statistic number */
+
+.property-stat-value {
+  margin: 0 0 0;
+  color: #ffffff;
+  font-size: clamp(54px, 5vw, 94px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -4px;
+}
+
+/* Statistic label */
+
+.property-stat-label {
+  margin: 0;
+  color: #b3b3b3;
+  font-size: clamp(15px, 1.2vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .property-stats-section {
+    width: calc(100% - 48px);
+    padding: 75px 30px;
+    margin: 50px auto;
+  }
+
+  .property-stats-heading {
+    margin-bottom: 50px;
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+
+  .property-stat-item {
+    padding: 0 24px;
+  }
+
+  .property-stat-item:first-child {
+    padding-left: 24px;
+  }
+
+  .property-stat-value {
+    font-size: clamp(48px, 6vw, 70px);
+    letter-spacing: -2.5px;
+  }
+
+  .property-stat-label {
+    font-size: 15px;
+    white-space: normal;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .property-stats-section {
+    width: calc(100% - 32px);
+    margin: 35px auto;
+    padding: 50px 22px;
+  }
+
+  .property-stats-eyebrow {
+    gap: 9px;
+  }
+
+  .property-stats-eyebrow-text {
+    font-size: 15px;
+  }
+
+  .property-stats-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .property-stats-heading {
+    max-width: 400px;
+    margin: 0 auto 36px;
+    font-size: 30px;
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+  }
+
+  .property-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 30px;
+  }
+
+  .property-stat-item {
+    padding: 0 12px;
+    border-right: none;
+  }
+
+  .property-stat-item:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .property-stat-item:first-child {
+    padding-left: 12px;
+  }
+
+  .property-stat-item:last-child {
+    padding-right: 12px;
+  }
+
+  .property-stat-value {
+    font-size: clamp(46px, 11vw, 64px);
+    letter-spacing: -2px;
+  }
+
+  .property-stat-label {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 360px) {
+  .property-stats-section {
+    padding: 40px 14px;
+  }
+
+  .property-stats-heading {
+    font-size: 26px;
+  }
+
+  .property-stat-item {
+    padding: 0 8px;
+  }
+
+  .property-stat-value {
+    font-size: 42px;
+  }
+
+  .property-stat-label {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .property-stats-section::before {
+    transform: none;
+  }
+}
+
+/* =========================================
+   ADMIN STATS EDIT SHORTCUT
+========================================= */
+
+.property-stats-admin-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.property-stats-admin-btn:hover {
+  background: #7f51ff;
+  border-color: #7f51ff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(127, 81, 255, 0.4);
+}
+
+@media (max-width: 640px) {
+  .property-stats-admin-btn {
+    top: 14px;
+    right: 14px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+}
+
