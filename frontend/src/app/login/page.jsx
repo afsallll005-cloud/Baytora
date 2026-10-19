@@ -297,7 +297,7 @@ function LoginForm() {
                   autoComplete="username"
                   autoCapitalize="none"
                   required
-                  placeholder="Admin@Buytora or name@example.com"
+                  placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
