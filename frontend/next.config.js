@@ -20,6 +20,10 @@ const nextConfig = {
         source: '/images/logo.png',
         destination: '/images/Logo.png',
       },
+      {
+        source: '/favicon.ico',
+        destination: '/images/Logo.png',
+      },
     ];
 
     const backendUrl = process.env.NEXT_PUBLIC_API_URL;

@@ -6,7 +6,14 @@ export const metadata = {
   title: 'Buytora | Luxury Real Estate & Curated Residences',
   description: "Buytora Premium Property Portal ✓ Explore luxury properties for rent and sale in Mumbai, Chennai, Ernakulam, and Delhi ✓ Verified Listings: Apartments, Villas, Penthouses on Buytora.",
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/images/Logo.png', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: ['/images/Logo.png'],
+    apple: [
+      { url: '/images/Logo.png', type: 'image/png' },
+    ],
   },
 };
 
@@ -14,6 +21,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" type="image/png" href="/images/Logo.png" />
+        <link rel="shortcut icon" type="image/png" href="/images/Logo.png" />
+        <link rel="apple-touch-icon" href="/images/Logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
