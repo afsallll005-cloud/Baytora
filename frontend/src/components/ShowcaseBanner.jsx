@@ -89,8 +89,10 @@ export default function ShowcaseBanner() {
           alt="Modern Architectural Pavilion Villa with Sunken Courtyard Pool"
           className="showcase-banner-img"
           onError={(e) => {
-            // Graceful fallback to route or high-res pool villa
-            e.currentTarget.src = '/api/showcase';
+            if (!e.currentTarget.dataset.fallbackTried) {
+              e.currentTarget.dataset.fallbackTried = 'true';
+              e.currentTarget.src = '/api/showcase';
+            }
           }}
           loading="eager"
           decoding="async"

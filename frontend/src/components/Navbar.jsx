@@ -91,7 +91,7 @@ export default function Navbar() {
           {/* Brand Logo */}
           <Link href="/" className="brand-logo" title="Buytora - Premium Real Estate">
             <div className="brand-icon">
-              <img src="/images/logo.png" alt="Buytora Logo" />
+              <img src="/images/Logo.png" alt="Buytora Logo" />
             </div>
             <div className="brand-name">
               Buyt<span className="brand-highlight">ora</span>
@@ -292,7 +292,7 @@ export default function Navbar() {
             <div className="drawer-header">
               <Link href="/" className="brand-logo" onClick={() => setMobileDrawerOpen(false)}>
                 <div className="brand-icon">
-                  <img src="/images/logo.png" alt="Buytora Logo" />
+                  <img src="/images/Logo.png" alt="Buytora Logo" />
                 </div>
                 <div className="brand-name">
                   Buyt<span className="brand-highlight">ora</span>

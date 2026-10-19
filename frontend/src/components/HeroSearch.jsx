@@ -219,7 +219,12 @@ export default function HeroSearch() {
   ];
 
   return (
-    <section className="hero-wrapper luxterra-hero">
+    <section 
+      className="hero-wrapper luxterra-hero"
+      style={{
+        backgroundImage: "linear-gradient(180deg, rgba(8, 12, 22, 0.18) 0%, rgba(8, 12, 22, 0.02) 32%, rgba(8, 12, 22, 0.22) 100%), url('/images/luxterra-hero.jpg')"
+      }}
+    >
       <div className="hero-content-area">
         {/* Main "Buytora" Brand Title */}
         <h1 className="hero-brand-title">Buytora</h1>
@@ -378,7 +383,7 @@ export default function HeroSearch() {
                           >
                             <div className="search-item-left">
                               <img
-                                src={prop.images?.[0] || './images/luxterra-hero.jpg'}
+                                src={prop.images?.[0] || '/images/luxterra-hero.jpg'}
                                 alt={prop.title}
                                 className="search-property-thumb"
                               />

@@ -152,7 +152,7 @@ export default function ContactModal({ property, isOpen, onClose }) {
                   type="tel"
                   name="phone"
                   required
-                  placeholder="+973 3XXXXXXX"
+                  placeholder="0000000000"
                   value={formData.phone}
                   onChange={handleChange}
                   className="form-input"

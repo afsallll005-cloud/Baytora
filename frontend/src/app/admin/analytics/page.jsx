@@ -104,7 +104,7 @@ export default function AdminAnalyticsPage() {
         <div className="admin-card">
           <div className="admin-card-header">
             <h3 className="admin-card-title">Top Communities by Inventory</h3>
-            <span style={{ fontSize: '0.8rem', color: '#6B7280' }}>Active Bahrain listings</span>
+            <span style={{ fontSize: '0.8rem', color: '#6B7280' }}>Active Buytora listings</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>

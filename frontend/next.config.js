@@ -15,9 +15,17 @@ const nextConfig = {
     ],
   },
   async rewrites() {
+    const imageRewrites = [
+      {
+        source: '/images/logo.png',
+        destination: '/images/Logo.png',
+      },
+    ];
+
     const backendUrl = process.env.NEXT_PUBLIC_API_URL;
     if (backendUrl && !backendUrl.includes('localhost')) {
       return [
+        ...imageRewrites,
         {
           source: '/api/:path*',
           destination: `${backendUrl.replace(/\/api\/?$/, '')}/api/:path*`,
@@ -26,13 +34,14 @@ const nextConfig = {
     }
     if (process.env.NODE_ENV === 'development') {
       return [
+        ...imageRewrites,
         {
           source: '/api/:path*',
           destination: 'http://localhost:5000/api/:path*',
         },
       ];
     }
-    return [];
+    return imageRewrites;
   },
 };
 

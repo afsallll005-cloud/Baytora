@@ -73,7 +73,7 @@ export default function AdminLayout({ children }) {
               flexShrink: 0,
             }}>
               <img 
-                src="/images/logo.png" 
+                src="/images/Logo.png" 
                 alt="Buytora Logo" 
                 style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.18)' }} 
               />

@@ -24,7 +24,7 @@ export default function CommercialRedirect() {
         Loading Commercial Properties
       </h3>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>
-        Retrieving fitted offices, retail shops, and commercial buildings in Bahrain...
+        Retrieving fitted offices, retail shops, and commercial buildings...
       </p>
       <style jsx>{`
         @keyframes spin {

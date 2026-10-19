@@ -24,7 +24,7 @@ export default function BuyRedirect() {
         Loading Properties for Sale
       </h3>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>
-        Searching verified villas, apartments, and penthouses in Bahrain...
+        Searching verified villas, apartments, and penthouses...
       </p>
       <style jsx>{`
         @keyframes spin {

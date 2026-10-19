@@ -98,7 +98,7 @@ export default function AgentsPage() {
       {/* Header */}
       <div style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto 40px' }}>
         <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.6px', marginBottom: 12 }}>
-          Find Real Estate Agents in Bahrain
+          Find Certified Real Estate Agents
         </h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.6 }}>
           Connect with certified SuperAgents and top-performing property consultants with proven track records in your target neighborhood.
@@ -122,7 +122,7 @@ export default function AgentsPage() {
           <Search size={18} color="var(--primary)" />
           <input
             type="text"
-            placeholder="Search by agent name, agency, or location (e.g. Saar, Reef Island)..."
+            placeholder="Search by agent name, agency, or location (e.g. Bandra, Alwarpet, Marine Drive)..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             style={{ width: '100%', border: 'none', outline: 'none', fontSize: '0.96rem' }}
@@ -142,9 +142,9 @@ export default function AgentsPage() {
 
       {/* Agents Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))', gap: 28 }}>
-        {filteredAgents.map((agent) => (
+        {filteredAgents.map((agent, index) => (
           <div
-            key={agent.id}
+            key={agent._id || agent.id || index}
             style={{
               background: '#FFFFFF',
               border: '1px solid var(--border-light)',
@@ -191,9 +191,13 @@ export default function AgentsPage() {
             <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 4 }}>
               {agent.name}
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', fontWeight: 500, marginBottom: 12 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', fontWeight: 500, marginBottom: 8 }}>
               {agent.company}
             </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, color: 'var(--text-secondary)', fontSize: '0.86rem', fontWeight: 600, marginBottom: 12 }}>
+              <Phone size={13} style={{ color: 'var(--primary)' }} />
+              <span>{agent.phone || '0000000000'}</span>
+            </div>
 
             {/* Metrics */}
             <div style={{ display: 'flex', justifyContent: 'center', gap: 20, padding: '10px 0', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', marginBottom: 16 }}>
@@ -219,9 +223,9 @@ export default function AgentsPage() {
                 Specialties:
               </span>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                {agent.specialties.map((s, idx) => (
+                {(Array.isArray(agent.specialties) ? agent.specialties : typeof agent.specialties === 'string' ? agent.specialties.split(',') : []).map((s, idx) => (
                   <span key={idx} style={{ background: 'var(--bg-page)', padding: '3px 8px', borderRadius: 4, fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-                    {s}
+                    {typeof s === 'string' ? s.trim() : s}
                   </span>
                 ))}
               </div>
@@ -230,7 +234,7 @@ export default function AgentsPage() {
             {/* Contact buttons */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 'auto' }}>
               <a
-                href={`https://wa.me/${agent.whatsapp}?text=Hi%20${encodeURIComponent(agent.name)},%20I%20found%20you%20on%20Buytora.`}
+                href={`https://wa.me/${(agent.whatsapp || '0000000000').toString().replace(/[^0-9]/g, '')}?text=Hi%20${encodeURIComponent(agent.name)},%20I%20found%20you%20on%20Buytora.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="action-btn action-whatsapp"
@@ -241,7 +245,7 @@ export default function AgentsPage() {
               </a>
 
               <a
-                href={`tel:${agent.phone}`}
+                href={`tel:${agent.phone || '0000000000'}`}
                 className="action-btn action-call"
                 style={{ justifyContent: 'center', height: 40 }}
               >

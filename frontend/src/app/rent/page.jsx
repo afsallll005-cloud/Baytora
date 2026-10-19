@@ -24,7 +24,7 @@ export default function RentRedirect() {
         Loading Properties for Rent
       </h3>
       <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>
-        Finding verified residential apartments, villas, and studios in Bahrain...
+        Finding verified residential apartments, villas, and studios...
       </p>
       <style jsx>{`
         @keyframes spin {

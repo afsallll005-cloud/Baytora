@@ -168,17 +168,17 @@ export default function PropertyDetailPage() {
     : `${currencyPrefix}${property.price?.toLocaleString()}`;
 
   const areaSqft = property.areaSqft || (property.area ? Math.round(property.area * 10.764) : 680);
-  const locationText = `${property.location?.city || 'Tampa'}, ${property.location?.governorate ? property.location.governorate.replace(' Governorate', '') : 'FL'}`;
+  const locationText = `${property.location?.city || 'Mumbai'}, ${property.location?.governorate ? property.location.governorate.replace(' Governorate', '') : 'Maharashtra'}`;
 
   const agent = property.agent || {
-    name: 'Emily Carter',
-    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
-    company: 'RentelHome Verified Broker',
+    name: 'Aarav Sharma',
+    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=256&q=80',
+    company: 'Buytora Premier Realty',
     rating: 4.95,
-    closedDeals: 24,
-    phone: '+1 (813) 555-0100',
-    whatsapp: '18135550100',
-    email: 'emily@rentelhome.com',
+    closedDeals: 74,
+    phone: '0000000000',
+    whatsapp: '0000000000',
+    email: 'aarav.sharma@buytora.in',
     isSuperAgent: true,
   };
 

@@ -135,7 +135,7 @@ export default function AdminDashboardPage() {
             <div className="admin-kpi-label">Certified Agents</div>
             <div className="admin-kpi-val">{totalAgents}</div>
             <div className="admin-kpi-sub">
-              Top rated SuperAgents in Bahrain
+              Top rated SuperAgents & partners
             </div>
           </div>
           <div className="admin-kpi-icon" style={{ background: '#FFF1F0', color: '#EF5E4E' }}>
@@ -442,7 +442,7 @@ export default function AdminDashboardPage() {
           <div>
             <h3 className="admin-card-title">Recent Property Inventory</h3>
             <p style={{ color: '#6B7280', fontSize: '0.85rem' }}>
-              Latest added properties in Bahrain
+              Latest added properties across all markets
             </p>
           </div>
           <Link href="/admin/properties" className="admin-btn admin-btn-outline">
