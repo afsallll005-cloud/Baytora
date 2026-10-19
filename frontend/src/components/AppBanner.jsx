@@ -8,11 +8,11 @@ export default function AppBanner() {
       <div className="app-banner">
         <div className="app-banner-info">
           <h2>
-            Download Bahrain's most trusted <br />
+            Download India's most trusted <br />
             property search app
           </h2>
           <p>
-            Install the Baytora app and start searching smarter with live GPS alerts, saved searches, and instant agent WhatsApp links.
+            Install the Buytora app and start searching smarter with live GPS alerts, saved searches, and instant agent WhatsApp links.
           </p>
 
           <div className="app-store-btns">

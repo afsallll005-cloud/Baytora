@@ -179,12 +179,12 @@ function LoginForm() {
             }}>
               <img 
                 src="/images/logo.png" 
-                alt="Baytora Logo" 
+                alt="Buytora Logo" 
                 style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.18)' }} 
               />
             </div>
             <span style={{ fontSize: '1.45rem', fontWeight: 700, letterSpacing: '-0.05em' }}>
-              Bayt<span style={{ color: '#7F51FF', fontWeight: 400 }}>ora</span>
+              Buyt<span style={{ color: '#7F51FF', fontWeight: 400 }}>ora</span>
             </span>
           </Link>
 
@@ -205,7 +205,7 @@ function LoginForm() {
           }}>
             {mode === 'login' 
               ? 'Access saved residences, search alerts & concierge'
-              : 'Join Baytora’s curated real estate marketplace'}
+              : 'Join Buytora’s curated real estate marketplace'}
           </p>
         </div>
 
@@ -297,7 +297,7 @@ function LoginForm() {
                   autoComplete="username"
                   autoCapitalize="none"
                   required
-                  placeholder="Admin@Baytora or name@example.com"
+                  placeholder="Admin@Buytora or name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
@@ -657,7 +657,7 @@ function LoginForm() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#7F51FF' }} />
               <strong>Demo Administrator</strong>
-              <span style={{ color: 'rgba(0,0,0,0.5)' }}>(Admin@Baytora • 12345678)</span>
+              <span style={{ color: 'rgba(0,0,0,0.5)' }}>(Admin@Buytora • 12345678)</span>
             </div>
             <ChevronRight size={14} color="#7F51FF" />
           </button>
@@ -736,7 +736,7 @@ export default function LoginPage() {
           justifyContent: 'center',
           fontFamily: 'sans-serif'
         }}>
-          <p style={{ color: '#6B7280', fontSize: '0.95rem' }}>Loading Baytora authentication...</p>
+          <p style={{ color: '#6B7280', fontSize: '0.95rem' }}>Loading Buytora authentication...</p>
         </div>
       }
     >

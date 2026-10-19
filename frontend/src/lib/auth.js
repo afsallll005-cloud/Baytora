@@ -1,54 +1,55 @@
 // ==========================================================================
-// BAYTORA AUTHENTICATION & USER MANAGEMENT
+// BUYTORA AUTHENTICATION & USER MANAGEMENT
 // ==========================================================================
 
 export const SEED_USERS = {
   admin: {
     id: 'user_admin_01',
-    name: 'Admin Baytora',
-    email: 'Admin@Baytora',
-    altEmail: 'admin@baytora.com',
+    name: 'Admin Buytora',
+    email: 'Admin@Buytora',
+    altEmail: 'admin@buytora.com',
     password: '12345678',
     role: 'admin',
     avatar: 'A',
     badge: 'Super Admin',
-    phone: '+1 (404) 555-0199',
+    phone: '0000000000',
   },
   agent: {
     id: 'user_agent_01',
-    name: 'Emily Carter',
-    email: 'emily@baytora.com',
+    name: 'Aarav Sharma',
+    email: 'aarav.sharma@buytora.in',
     password: '12345678',
     role: 'agent',
-    avatar: 'E',
+    avatar: 'A',
     badge: 'Certified Broker',
-    phone: '+1 (404) 555-0144',
+    phone: '0000000000',
   },
   user: {
     id: 'user_client_01',
-    name: 'Sarah Jenkins',
-    email: 'sarah.j@example.com',
+    name: 'Priya Patel',
+    email: 'priya.patel@buytora.in',
     password: '12345678',
     role: 'user',
-    avatar: 'S',
+    avatar: 'P',
     badge: 'Verified Buyer',
-    phone: '+1 (813) 555-0182',
+    phone: '0000000000',
   },
 };
 
 export const DEMO_ACCOUNTS = SEED_USERS;
 
-const STORAGE_KEY = 'baytora_current_user';
+const STORAGE_KEY = 'buytora_current_user';
 
 export function getCurrentUser() {
   if (typeof window === 'undefined') return null;
   try {
     let raw = localStorage.getItem(STORAGE_KEY);
-    // If not found, check legacy key once and migrate
+    // If not found, check legacy keys once and migrate
     if (!raw) {
-      const legacy = localStorage.getItem('luxterra_current_user');
+      const legacy = localStorage.getItem('baytora_current_user') || localStorage.getItem('luxterra_current_user');
       if (legacy) {
         localStorage.setItem(STORAGE_KEY, legacy);
+        localStorage.removeItem('baytora_current_user');
         localStorage.removeItem('luxterra_current_user');
         raw = legacy;
       }
@@ -66,11 +67,13 @@ export function saveUserSession(user) {
     if (user) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
       // Clean legacy keys
+      localStorage.removeItem('baytora_current_user');
       localStorage.removeItem('luxterra_current_user');
       localStorage.removeItem('rentel_user');
       localStorage.removeItem('user');
     } else {
       localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem('baytora_current_user');
       localStorage.removeItem('luxterra_current_user');
       localStorage.removeItem('rentel_user');
       localStorage.removeItem('user');
@@ -88,8 +91,10 @@ export async function loginUser({ email, password }) {
   const cleanEmail = (email || '').trim().toLowerCase();
   const cleanPassword = (password || '').trim();
 
-  // Match Admin: Admin@Baytora, admin@baytora.com, or admin
+  // Match Admin: Admin@Buytora, Admin@Baytora, admin@buytora.com, or admin
   if (
+    cleanEmail === 'admin@buytora' || 
+    cleanEmail === 'admin@buytora.com' || 
     cleanEmail === 'admin@baytora' || 
     cleanEmail === 'admin@baytora.com' || 
     cleanEmail === 'admin'

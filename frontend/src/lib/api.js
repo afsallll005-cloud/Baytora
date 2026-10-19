@@ -477,42 +477,42 @@ export async function fetchLocationsSummary() {
 
 export const initialFeaturedCities = [
   {
-    _id: "city_tampa",
-    name: "Tampa",
-    description: "Find waterfront living, lively districts & value",
+    _id: "661f0001a1b2c3d4e5f60051",
+    name: "Mumbai",
+    description: "Find waterfront living, lively districts & luxury residences",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=85",
     fallbackImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
-    href: "/properties?search=Tampa",
+    href: "/properties?search=Mumbai",
     order: 1,
     isActive: true,
   },
   {
-    _id: "city_jacksonville",
-    name: "Jacksonville",
+    _id: "661f0001a1b2c3d4e5f60052",
+    name: "Chennai",
     description: "Explore coastal neighborhoods and green spaces",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
     fallbackImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
-    href: "/properties?search=Jacksonville",
+    href: "/properties?search=Chennai",
     order: 2,
     isActive: true,
   },
   {
-    _id: "city_orlando",
-    name: "Orlando",
-    description: "Discover vibrant communities, scenic areas & lifestyle",
+    _id: "661f0001a1b2c3d4e5f60053",
+    name: "Ernakulam",
+    description: "Discover vibrant communities, scenic backwaters & lifestyle",
     image: "https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=1000&q=85",
     fallbackImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80",
-    href: "/properties?search=Orlando",
+    href: "/properties?search=Ernakulam",
     order: 3,
     isActive: true,
   },
   {
-    _id: "city_miami",
-    name: "Miami",
-    description: "Enjoy luxury coastal homes and urban style",
+    _id: "661f0001a1b2c3d4e5f60054",
+    name: "Delhi",
+    description: "Enjoy luxury heritage estates and modern urban living",
     image: "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=1000&q=85",
     fallbackImage: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba8?auto=format&fit=crop&w=1000&q=80",
-    href: "/properties?search=Miami",
+    href: "/properties?search=Delhi",
     order: 4,
     isActive: true,
   },
@@ -533,11 +533,13 @@ function getLocalCities() {
   }
 }
 
-function saveLocalCities(cities) {
+function saveLocalCities(cities, notify = false) {
   if (typeof window === 'undefined') return;
   try {
     localStorage.setItem('rentel_featured_cities', JSON.stringify(cities));
-    window.dispatchEvent(new Event('featured-cities-changed'));
+    if (notify) {
+      window.dispatchEvent(new Event('featured-cities-changed'));
+    }
   } catch (e) {}
 }
 
@@ -551,8 +553,8 @@ export async function fetchFeaturedCities(showAll = false) {
     if (!res.ok) throw new Error(`API responded with ${res.status}`);
     const json = await res.json();
     if (json && json.data && json.data.length > 0) {
-      // Keep local sync updated
-      saveLocalCities(json.data);
+      // Keep local sync updated without triggering infinite re-fetch loop
+      saveLocalCities(json.data, false);
       return json.data;
     }
     throw new Error('Empty cities data');
@@ -577,7 +579,7 @@ export async function createFeaturedCity(data) {
     if (json && json.success) {
       const local = getLocalCities();
       local.push(json.data);
-      saveLocalCities(local);
+      saveLocalCities(local, true);
       return json;
     }
     throw new Error(json.message || 'Failed to create city');
@@ -596,7 +598,7 @@ export async function createFeaturedCity(data) {
       createdAt: new Date().toISOString(),
     };
     local.push(newCity);
-    saveLocalCities(local);
+    saveLocalCities(local, true);
     return { success: true, data: newCity };
   }
 }
@@ -614,7 +616,7 @@ export async function updateFeaturedCity(id, updates) {
       const idx = local.findIndex(c => String(c._id) === String(id));
       if (idx !== -1) {
         local[idx] = { ...local[idx], ...updates };
-        saveLocalCities(local);
+        saveLocalCities(local, true);
       }
       return json;
     }
@@ -625,7 +627,7 @@ export async function updateFeaturedCity(id, updates) {
     const idx = local.findIndex(c => String(c._id) === String(id));
     if (idx !== -1) {
       local[idx] = { ...local[idx], ...updates, updatedAt: new Date().toISOString() };
-      saveLocalCities(local);
+      saveLocalCities(local, true);
       return { success: true, data: local[idx] };
     }
     return { success: false, message: 'City not found' };
@@ -640,13 +642,13 @@ export async function deleteFeaturedCity(id) {
     const json = await res.json();
     const local = getLocalCities();
     const updated = local.filter(c => String(c._id) !== String(id));
-    saveLocalCities(updated);
+    saveLocalCities(updated, true);
     return json;
   } catch (err) {
     console.warn('API deleteFeaturedCity fallback:', err.message);
     const local = getLocalCities();
     const updated = local.filter(c => String(c._id) !== String(id));
-    saveLocalCities(updated);
+    saveLocalCities(updated, true);
     return { success: true, message: 'City deleted' };
   }
 }
@@ -703,7 +705,7 @@ export async function fetchHomepageStats() {
   let stats = null;
   if (typeof window !== 'undefined') {
     try {
-      const raw = localStorage.getItem('baytora_homepage_stats');
+      const raw = localStorage.getItem('buytora_homepage_stats') || localStorage.getItem('baytora_homepage_stats');
       if (raw) {
         stats = JSON.parse(raw);
       }
@@ -759,7 +761,7 @@ export async function fetchHomepageStats() {
 export function saveHomepageStats(newStats) {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem('baytora_homepage_stats', JSON.stringify(newStats));
+    localStorage.setItem('buytora_homepage_stats', JSON.stringify(newStats));
     window.dispatchEvent(new Event('homepage-stats-changed'));
   } catch (err) {
     console.error('Error saving homepage stats:', err);
@@ -769,6 +771,7 @@ export function saveHomepageStats(newStats) {
 export function resetHomepageStats() {
   if (typeof window === 'undefined') return;
   try {
+    localStorage.removeItem('buytora_homepage_stats');
     localStorage.removeItem('baytora_homepage_stats');
     window.dispatchEvent(new Event('homepage-stats-changed'));
   } catch (err) {}

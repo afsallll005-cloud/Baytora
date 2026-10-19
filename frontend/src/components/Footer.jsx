@@ -89,7 +89,7 @@ export default function Footer() {
             <div className="footer-contact-info">
               <div className="footer-col-header" style={{ marginBottom: 8, marginTop: 16 }}>Contact</div>
               <a href="tel:+1404506100" className="footer-contact-item">+1 (404) 506-100</a>
-              <a href="mailto:info@baytora.com" className="footer-contact-item">info@baytora.com</a>
+              <a href="mailto:info@buytora.com" className="footer-contact-item">info@buytora.com</a>
               <span className="footer-contact-item" style={{ color: 'rgba(255,255,255,0.6)' }}>
                 105 Hertha Road, Tampa, FL
               </span>
@@ -99,12 +99,12 @@ export default function Footer() {
 
         {/* Large Signature Watermark Text */}
         <div className="footer-brand-watermark" aria-hidden="true">
-          <h1 className="footer-watermark-text">Baytora</h1>
+          <h1 className="footer-watermark-text">Buytora</h1>
         </div>
 
         {/* Footer Bottom Bar */}
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Baytora Real Estate. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Buytora Real Estate. All rights reserved.</span>
           <div style={{ display: 'flex', gap: 18 }}>
             <Link href="/#">Privacy Policy</Link>
             <Link href="/#">Terms of Service</Link>

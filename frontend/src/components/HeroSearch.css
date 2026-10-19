@@ -1,18 +1,22 @@
 /* ==========================================================================
-   LUXTERRA DYNAMIC HERO & SEARCH COMPONENT STYLES
+   BUYTORA HERO & SEARCH COMPONENT STYLES
+   Matches the luxury penthouse dusk background with bold Buytora typography
+   and sleek white multi-tab search widget. Fully responsive across all devices.
    ========================================================================== */
 
 .hero-wrapper.luxterra-hero,
 .hero-wrapper {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
+  margin-top: -72px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 95px 44px 26px;
-  background: linear-gradient(180deg, rgba(8, 10, 16, 0.44) 0%, rgba(8, 10, 16, 0.20) 38%, rgba(6, 8, 12, 0.88) 100%),
-              url('/api/hero-bg') center/cover no-repeat;
+  justify-content: flex-end;
+  padding: 120px 48px 68px;
+  background: linear-gradient(180deg, rgba(8, 12, 22, 0.18) 0%, rgba(8, 12, 22, 0.02) 32%, rgba(8, 12, 22, 0.22) 100%),
+              url('/images/luxterra-hero.jpg') center 28% / cover no-repeat;
   box-sizing: border-box;
   overflow: visible;
 }
@@ -23,159 +27,158 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: flex-start;
   position: relative;
   z-index: 20;
 }
 
-.hero-intro-block {
-  max-width: 620px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+/* ==========================================================================
+   MAIN "BUYTORA" BRAND TITLE
+   Big bold white typography overlapping the search card
+   ========================================================================== */
 
-.hero-lead-text {
+.hero-brand-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(64px, 9.5vw, 156px);
+  font-weight: 900;
   color: #FFFFFF;
-  font-size: clamp(20px, 2.2vw, 30px);
-  font-weight: 500;
-  line-height: 1.28;
-  letter-spacing: -0.03em;
-  margin: 0;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  margin: 0 0 24px 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.42);
+  user-select: none;
+  word-break: normal;
 }
 
-.hero-actions-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+/* ==========================================================================
+   SEARCH CONTAINER
+   Clean white floating card with tabs, input and 4 filter selects
+   ========================================================================== */
 
-.hero-view-listings-btn {
-  background: #FFFFFF;
-  color: #111112;
-  font-size: 0.94rem;
-  font-weight: 600;
-  padding: 12px 28px;
-  border-radius: 999px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.hero-view-listings-btn:hover {
-  background: #F4F4F5;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-/* Search Container in its proper area */
 .search-container {
   width: 100%;
-  max-width: 1040px;
+  max-width: 860px;
   background: #FFFFFF;
-  border-radius: 6px;
-  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.45);
-  overflow: visible;
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  z-index: 2;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-sizing: border-box;
 }
 
+/* Category Tabs */
 .search-tabs {
   display: flex;
-  background: #F7F7F8;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  padding: 5px;
-  gap: 6px;
-  border-bottom: 1px solid #EAEAEA;
+  align-items: center;
+  background: #FFFFFF;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid #ECECEF;
+  padding: 6px 8px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.search-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .search-tab {
   flex: 1;
-  padding: 11px 18px;
-  border-radius: 4px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 5px;
   font-weight: 600;
-  font-size: 0.92rem;
-  color: rgba(17, 17, 18, 0.72);
+  font-size: 0.88rem;
   letter-spacing: -0.2px;
-  transition: all 0.18s ease;
+  color: #27272A;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  background: transparent;
-  border: none;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+  user-select: none;
 }
 
 .search-tab:hover:not(.active) {
+  background: #F4F4F6;
   color: #111112;
-  background: rgba(0, 0, 0, 0.05);
 }
 
 .search-tab.active {
   background: #111112;
   color: #FFFFFF;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Search Form Body */
 .search-bar-body {
-  padding: 14px 18px;
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .search-input-row {
   display: flex;
-  gap: 10px;
   align-items: center;
-  margin-bottom: 12px;
+  gap: 8px;
   position: relative;
+  width: 100%;
 }
 
 .location-input-wrapper {
   flex: 1;
-  position: relative;
+  min-width: 0;
+  height: 46px;
+  background: #F5F6F8;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
   display: flex;
   align-items: center;
-  background: #F7F7F8;
-  border: 1px solid #EAEAEA;
-  border-radius: 3px;
-  padding: 0 14px;
-  height: 50px;
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  padding: 0 12px;
+  position: relative;
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
 }
 
 .location-input-wrapper:focus-within {
   border-color: #111112;
   background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(17, 17, 18, 0.06);
+  box-shadow: 0 0 0 2px rgba(17, 17, 18, 0.05);
 }
 
 .location-icon {
-  color: #7F51FF;
-  margin-right: 10px;
+  color: #8B5CF6;
+  margin-right: 8px;
   flex-shrink: 0;
 }
 
 .location-input {
   width: 100%;
+  min-width: 0;
   border: none;
   background: transparent;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #111112;
+  font-size: 0.88rem;
+  font-weight: 450;
+  color: #18181B;
   outline: none;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.15px;
 }
 
 .location-input::placeholder {
-  color: rgba(17, 17, 18, 0.45);
+  color: #9CA3AF;
   font-weight: 400;
 }
 
@@ -189,6 +192,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  flex-shrink: 0;
   transition: color 0.15s, background 0.15s;
 }
 
@@ -198,30 +202,34 @@
 }
 
 .search-submit-btn {
-  height: 50px;
-  padding: 0 32px;
+  height: 46px;
+  padding: 0 22px;
   background: #111112;
   color: #FFFFFF;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: -0.2px;
-  border-radius: 3px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: all 0.2s ease;
 }
 
 .search-submit-btn:hover {
   background: #000000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
 }
 
 /* ==========================================================================
-   LIVE AUTO-COMPLETE & SUGGESTIONS DROPDOWN
+   DROPDOWN SUGGESTIONS MENU
    ========================================================================== */
 
 .search-dropdown-menu {
@@ -235,7 +243,7 @@
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
   z-index: 100;
   overflow: hidden;
-  max-height: 420px;
+  max-height: clamp(260px, 45vh, 400px);
   overflow-y: auto;
   scrollbar-width: thin;
   animation: dropdownFadeIn 0.2s ease-out;
@@ -269,7 +277,7 @@
 }
 
 .search-dropdown-header {
-  padding: 8px 16px;
+  padding: 8px 14px;
   background: #F9FAFB;
   font-size: 0.74rem;
   font-weight: 700;
@@ -282,7 +290,7 @@
 }
 
 .search-dropdown-item {
-  padding: 11px 16px;
+  padding: 10px 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -309,13 +317,13 @@
 }
 
 .search-location-name {
-  font-size: 0.92rem;
+  font-size: 0.90rem;
   font-weight: 600;
   color: #111827;
 }
 
 .search-location-sub {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #6B7280;
 }
 
@@ -329,17 +337,16 @@
   white-space: nowrap;
 }
 
-/* Direct Property Suggestion Item */
 .search-property-thumb {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 4px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .search-property-title {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: #111827;
   white-space: nowrap;
@@ -349,7 +356,7 @@
 }
 
 .search-property-meta {
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   color: #6B7280;
   display: flex;
   align-items: center;
@@ -357,16 +364,15 @@
 }
 
 .search-property-price {
-  font-size: 0.92rem;
+  font-size: 0.90rem;
   font-weight: 700;
   color: #111827;
   white-space: nowrap;
 }
 
-/* Agent Suggestion Item */
 .search-agent-thumb {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -374,17 +380,16 @@
 }
 
 .search-agent-name {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: #111827;
 }
 
 .search-agent-company {
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   color: #6B7280;
 }
 
-/* Empty suggestions state */
 .search-dropdown-empty {
   padding: 20px 16px;
   text-align: center;
@@ -393,24 +398,42 @@
 }
 
 /* ==========================================================================
-   SECONDARY FILTERS ROW
+   DROPDOWN FILTERS ROW (4 COLUMNS)
    ========================================================================== */
 
 .filters-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.filters-row.agents-filters {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.filter-select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .filter-select {
-  height: 42px;
-  padding: 0 12px;
+  width: 100%;
+  height: 38px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background: #FFFFFF;
-  border: 1px solid #EAEAEA;
-  border-radius: 3px;
-  font-size: 0.86rem;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  padding: 0 28px 0 10px;
+  font-size: 0.82rem;
   font-weight: 500;
-  color: #111112;
+  color: #18181B;
+  letter-spacing: -0.1px;
   outline: none;
   cursor: pointer;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -422,210 +445,256 @@
   box-shadow: 0 0 0 2px rgba(17, 17, 18, 0.05);
 }
 
-/* ==========================================================================
-   QUICK SEARCH CHIPS
-   ========================================================================== */
-
-.quick-chips-section {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 22px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.chip-label {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 0.84rem;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.quick-chip {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  color: #FFFFFF;
-  padding: 6px 14px;
-  border-radius: 24px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: -0.2px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  transition: all 0.2s ease;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.quick-chip:hover {
-  background: #FFFFFF;
-  color: #111112;
-  border-color: #FFFFFF;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* ==========================================================================
-   HERO BOTTOM ROW: LUXTERRA WATERMARK & TALK TO AN AGENT CARD
-   ========================================================================== */
-
-.hero-bottom-row {
-  width: 100%;
-  max-width: 1356px;
-  margin: 16px auto 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  position: relative;
-  z-index: 10;
-}
-
-.hero-brand-watermark {
-  font-size: clamp(52px, 8.5vw, 120px);
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: -0.05em;
-  line-height: 0.85;
-  user-select: none;
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 8px 36px rgba(0, 0, 0, 0.35);
+.filter-chevron {
+  position: absolute;
+  right: 10px;
   pointer-events: none;
-}
-
-.hero-agent-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 12px 18px;
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  text-decoration: none;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin-bottom: 8px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.hero-agent-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.4);
-}
-
-.hero-agent-avatar-wrap {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid #F3F4F6;
-}
-
-.hero-agent-avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-agent-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-align: left;
-}
-
-.hero-agent-sub {
-  font-size: 0.78rem;
-  color: #71717A;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.hero-agent-title {
-  font-size: 0.98rem;
-  color: #111112;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  line-height: 1.2;
-}
-
-.hero-agent-arrow-btn {
-  width: 36px;
-  height: 36px;
-  background: #111112;
-  color: #FFFFFF;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, transform 0.2s;
-  flex-shrink: 0;
-}
-
-.hero-agent-card:hover .hero-agent-arrow-btn {
-  background: #000000;
-  transform: translateX(2px);
+  color: #18181B;
+  opacity: 0.85;
 }
 
 /* ==========================================================================
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
-@media (max-width: 992px) {
+/* Tablet & Smaller Laptops (<= 1024px) */
+@media (max-width: 1024px) {
   .hero-wrapper.luxterra-hero,
   .hero-wrapper {
-    padding: 100px 24px 30px;
-    min-height: auto;
+    padding: 110px 32px 54px;
+    background-position: center 30%;
   }
-  .hero-bottom-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    margin-top: 28px;
+
+  .hero-brand-title {
+    font-size: clamp(60px, 10vw, 110px);
+    margin-bottom: 20px;
   }
-  .hero-brand-watermark {
-    font-size: clamp(54px, 16vw, 96px);
-    line-height: 0.9;
-  }
-  .hero-agent-card {
-    width: 100%;
-    max-width: 360px;
-    justify-content: space-between;
-  }
-  .search-input-row {
-    flex-direction: column;
-  }
-  .search-submit-btn {
-    width: 100%;
-    justify-content: center;
-  }
-  .search-tabs {
-    flex-wrap: wrap;
-  }
-  .search-tab {
-    flex: 1 1 45%;
-    padding: 9px;
-    font-size: 0.86rem;
+
+  .search-container {
+    max-width: 100%;
   }
 }
 
+/* Tablets & Large Phablets (<= 900px) */
+@media (max-width: 900px) {
+  .hero-wrapper.luxterra-hero,
+  .hero-wrapper {
+    padding: 105px 24px 44px;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .hero-content-area {
+    align-items: flex-start;
+  }
+
+  .hero-brand-title {
+    font-size: clamp(52px, 10vw, 84px);
+    margin-bottom: 18px;
+    line-height: 0.92;
+  }
+
+  .filters-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+/* Mobile Devices (<= 640px) */
 @media (max-width: 640px) {
   .hero-wrapper.luxterra-hero,
   .hero-wrapper {
-    padding: 85px 16px 24px;
+    padding: 95px 16px 36px;
+    margin-top: -64px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-position: center 35%;
   }
-  .hero-lead-text {
-    font-size: 1.35rem;
-    line-height: 1.3;
+
+  .hero-brand-title {
+    font-size: clamp(42px, 12vw, 64px);
+    margin-bottom: 14px;
+    letter-spacing: -0.035em;
+    line-height: 0.94;
   }
-  .hero-agent-card {
-    max-width: 100%;
+
+  .search-container {
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  }
+
+  .search-tabs {
+    padding: 5px 6px;
+    gap: 4px;
+  }
+
+  .search-tab {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 0.82rem;
+    flex: 1 0 auto;
+  }
+
+  .search-bar-body {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .search-input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .location-input-wrapper {
+    width: 100%;
+    height: 44px;
+    padding: 0 10px;
+  }
+
+  .location-input {
+    font-size: 0.85rem;
+  }
+
+  .search-submit-btn {
+    width: 100%;
+    height: 44px;
+    justify-content: center;
+    font-size: 0.88rem;
+  }
+
+  .filters-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .filters-row.agents-filters {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .filter-select {
+    height: 40px;
+    font-size: 0.80rem;
+    padding: 0 24px 0 8px;
+  }
+
+  .search-dropdown-menu {
+    max-height: 300px;
+  }
+
+  .search-property-title {
+    max-width: 180px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Small Phones (<= 420px) */
+@media (max-width: 420px) {
+  .hero-wrapper.luxterra-hero,
+  .hero-wrapper {
+    padding: 90px 12px 28px;
+    margin-top: -60px;
+  }
+
+  .hero-brand-title {
+    font-size: clamp(36px, 12.5vw, 48px);
+    margin-bottom: 12px;
+    letter-spacing: -0.03em;
+  }
+
+  .search-tabs {
+    padding: 4px;
+    gap: 3px;
+  }
+
+  .search-tab {
+    height: 36px;
+    padding: 0 9px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+
+  .search-tab svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .search-bar-body {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .location-input-wrapper {
+    height: 42px;
+    padding: 0 8px;
+  }
+
+  .location-input {
+    font-size: 0.82rem;
+  }
+
+  .location-icon {
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .search-submit-btn {
+    height: 42px;
+    font-size: 0.84rem;
+  }
+
+  .filters-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .filter-select {
+    height: 38px;
+    font-size: 0.76rem;
+    padding: 0 20px 0 6px;
+  }
+
+  .filter-chevron {
+    right: 6px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .search-dropdown-item {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .search-property-thumb {
+    width: 36px;
+    height: 36px;
+  }
+
+  .search-property-title {
+    max-width: 140px;
+    font-size: 0.78rem;
+  }
+
+  .search-location-name {
+    font-size: 0.82rem;
+  }
+
+  .search-count-pill {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+  }
+}
+
+/* Ultra-Compact Screens (<= 320px) */
+@media (max-width: 320px) {
+  .hero-brand-title {
+    font-size: 34px;
+  }
+
+  .filters-row {
+    grid-template-columns: 1fr;
   }
 }

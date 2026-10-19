@@ -1,4 +1,4 @@
-# Baytora - Luxury Real Estate & Curated Residences Portal
+# Buytora - Luxury Real Estate & Curated Residences Portal
 
 A modern, full-stack real estate marketplace portal inspired by architectural minimalism and modern luxury design. Built with **Next.js 14** (App Router), an **Express.js** REST API backend, and **MongoDB**.
 
@@ -149,6 +149,6 @@ npm run seed
 ## 🔑 Default Administrator Credentials
 
 To access the Admin Console at **`/admin`**:
-- **Email:** `Admin@Baytora` *(or `admin@baytora.com`)*
+- **Email:** `Admin@Buytora` *(or `admin@buytora.com`)*
 - **Password:** `12345678`
 - **Role:** Super Admin

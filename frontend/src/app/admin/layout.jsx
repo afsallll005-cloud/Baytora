@@ -74,11 +74,11 @@ export default function AdminLayout({ children }) {
             }}>
               <img 
                 src="/images/logo.png" 
-                alt="Baytora Logo" 
+                alt="Buytora Logo" 
                 style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.18)' }} 
               />
             </div>
-            <span>Baytora</span>
+            <span>Buytora</span>
           </Link>
           <div className="admin-badge">Admin Console</div>
         </div>

@@ -12,8 +12,8 @@ export default function ContactModal({ property, isOpen, onClose }) {
     email: '',
     phone: '',
     message: property 
-      ? `Hi, I found your property "${property.title}" (Ref: ${property.referenceNumber || 'N/A'}) on Baytora. Please contact me with more information.`
-      : 'Hi, I would like to inquire about rental properties on Baytora.',
+      ? `Hi, I found your property "${property.title}" (Ref: ${property.referenceNumber || 'N/A'}) on Buytora. Please contact me with more information.`
+      : 'Hi, I would like to inquire about rental properties on Buytora.',
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);

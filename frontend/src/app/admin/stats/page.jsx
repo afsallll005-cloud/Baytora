@@ -196,7 +196,7 @@ export default function AdminHomepageStatsPage() {
             "At a glance" Statistics
           </h1>
           <p style={{ margin: '4px 0 0', color: '#6B7280', fontSize: '0.9rem' }}>
-            Control dynamic metrics, headings, and animated counters displayed on the Baytora public landing page.
+            Control dynamic metrics, headings, and animated counters displayed on the Buytora public landing page.
           </p>
         </div>
 

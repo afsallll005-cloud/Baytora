@@ -1,7 +1,7 @@
 {
-  "name": "baytora-backend",
+  "name": "buytora-backend",
   "version": "1.0.0",
-  "description": "Express and MongoDB backend for Baytora Real Estate Portal",
+  "description": "Express and MongoDB backend for Buytora Real Estate Portal",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -1,7 +1,7 @@
 {
-  "name": "baytora-real-estate",
+  "name": "buytora-real-estate",
   "version": "1.0.0",
-  "description": "Baytora - Modern Luxury Real Estate & Residences Portal",
+  "description": "Buytora - Modern Luxury Real Estate & Residences Portal",
   "scripts": {
     "dev": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
@@ -12,11 +12,11 @@
   },
   "keywords": [
     "real-estate",
-    "baytora",
+    "buytora",
     "nextjs",
     "express",
     "mongodb"
   ],
-  "author": "Baytora",
+  "author": "Buytora",
   "license": "ISC"
 }

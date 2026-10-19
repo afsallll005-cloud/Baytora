@@ -220,20 +220,11 @@ export default function HeroSearch() {
 
   return (
     <section className="hero-wrapper luxterra-hero">
-      {/* Upper Area: Lead Statement + View Listings Button + Search Form in proper area */}
       <div className="hero-content-area">
-        <div className="hero-intro-block">
-          <p className="hero-lead-text">
-            We help buyers and sellers navigate Florida real estate with clarity—featuring curated listings and seamless support.
-          </p>
-          <div className="hero-actions-row">
-            <Link href="/properties" className="hero-view-listings-btn">
-              View listings
-            </Link>
-          </div>
-        </div>
+        {/* Main "Buytora" Brand Title */}
+        <h1 className="hero-brand-title">Buytora</h1>
 
-        {/* Search Container in its proper area */}
+        {/* Search Container */}
         <div className="search-container">
           {/* Category Tabs */}
           <div className="search-tabs">
@@ -292,8 +283,8 @@ export default function HeroSearch() {
                   className="location-input"
                   placeholder={
                     activeTab === 'agents'
-                      ? 'Search certified agents by name or specialty (e.g. Tariq, Waterfront, Penthouses)...'
-                      : `Search by city, community, or title (e.g. ${dynamicLocations.slice(0, 2).map((l) => l.city).join(', ') || 'Tampa, Bayshore'})...`
+                      ? 'Search certified agents by name or specialty...'
+                      : 'Search by city, community, or title (e.g. Seef, Al Juffair)...'
                   }
                   value={searchLocation}
                   onChange={(e) => {
@@ -387,7 +378,7 @@ export default function HeroSearch() {
                           >
                             <div className="search-item-left">
                               <img
-                                src={prop.images?.[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80'}
+                                src={prop.images?.[0] || './images/luxterra-hero.jpg'}
                                 alt={prop.title}
                                 className="search-property-thumb"
                               />
@@ -426,11 +417,11 @@ export default function HeroSearch() {
                             onClick={() => handleSelectAgent(agent)}
                           >
                             <div className="search-item-left">
-                              <img
+                              {/* <img
                                 src={agent.photo || 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=120&q=80'}
                                 alt={agent.name}
                                 className="search-agent-thumb"
-                              />
+                              /> */}
                               <div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                                   <span className="search-agent-name">{agent.name}</span>
@@ -474,135 +465,150 @@ export default function HeroSearch() {
             {activeTab !== 'agents' ? (
               <div className="filters-row">
                 {/* Dynamic Property Types */}
-                <select
-                  className="filter-select"
-                  value={propertyType}
-                  onChange={(e) => setPropertyType(e.target.value)}
-                >
-                  <option value="all">Property Type (All)</option>
-                  {dynamicTypes.length > 0 ? (
-                    dynamicTypes.map(({ type, count }) => (
-                      <option key={type} value={type}>
-                        {type} ({count})
-                      </option>
-                    ))
-                  ) : (
-                    <>
-                      <option value="Apartment">Apartment</option>
-                      <option value="Villa">Villa</option>
-                      <option value="Townhouse">Townhouse</option>
-                      <option value="Penthouse">Penthouse</option>
-                      <option value="Studio">Studio</option>
-                      <option value="Commercial">Commercial</option>
-                    </>
-                  )}
-                </select>
+                <div className="filter-select-wrapper">
+                  <select
+                    className="filter-select"
+                    value={propertyType}
+                    onChange={(e) => setPropertyType(e.target.value)}
+                  >
+                    <option value="all">Property Type (All)</option>
+                    {dynamicTypes.length > 0 ? (
+                      dynamicTypes.map(({ type, count }) => (
+                        <option key={type} value={type}>
+                          {type} ({count})
+                        </option>
+                      ))
+                    ) : (
+                      <>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Villa">Villa</option>
+                        <option value="Townhouse">Townhouse</option>
+                        <option value="Penthouse">Penthouse</option>
+                        <option value="Studio">Studio</option>
+                        <option value="Commercial">Commercial</option>
+                      </>
+                    )}
+                  </select>
+                  <ChevronDown size={14} className="filter-chevron" />
+                </div>
 
                 {/* Bedrooms */}
                 {activeTab !== 'commercial' && (
-                  <select
-                    className="filter-select"
-                    value={bedrooms}
-                    onChange={(e) => setBedrooms(e.target.value)}
-                  >
-                    <option value="any">Bedrooms (Any)</option>
-                    <option value="0">Studio</option>
-                    <option value="1">1 Bedroom</option>
-                    <option value="2">2 Bedrooms</option>
-                    <option value="3">3 Bedrooms</option>
-                    <option value="4+">4+ Bedrooms</option>
-                  </select>
+                  <div className="filter-select-wrapper">
+                    <select
+                      className="filter-select"
+                      value={bedrooms}
+                      onChange={(e) => setBedrooms(e.target.value)}
+                    >
+                      <option value="any">Bedrooms (Any)</option>
+                      <option value="0">Studio</option>
+                      <option value="1">1 Bedroom</option>
+                      <option value="2">2 Bedrooms</option>
+                      <option value="3">3 Bedrooms</option>
+                      <option value="4+">4+ Bedrooms</option>
+                    </select>
+                    <ChevronDown size={14} className="filter-chevron" />
+                  </div>
                 )}
 
                 {/* Dynamic Price Range */}
-                <select
-                  className="filter-select"
-                  value={maxPrice}
-                  onChange={(e) => setMaxPrice(e.target.value)}
-                >
-                  <option value="">Max Price (Any)</option>
-                  {activeTab === 'rent' ? (
-                    isUSD ? (
-                      <>
-                        <option value="1000">Up to $1,000/mo</option>
-                        <option value="1500">Up to $1,500/mo</option>
-                        <option value="2500">Up to $2,500/mo</option>
-                        <option value="4000">Up to $4,000/mo</option>
-                        <option value="6000">Up to $6,000/mo</option>
-                      </>
+                <div className="filter-select-wrapper">
+                  <select
+                    className="filter-select"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(e.target.value)}
+                  >
+                    <option value="">Max Price (Any)</option>
+                    {activeTab === 'rent' ? (
+                      isUSD ? (
+                        <>
+                          <option value="1000">Up to $1,000/mo</option>
+                          <option value="1500">Up to $1,500/mo</option>
+                          <option value="2500">Up to $2,500/mo</option>
+                          <option value="4000">Up to $4,000/mo</option>
+                          <option value="6000">Up to $6,000/mo</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="300">Up to 300 BHD/mo</option>
+                          <option value="500">Up to 500 BHD/mo</option>
+                          <option value="800">Up to 800 BHD/mo</option>
+                          <option value="1200">Up to 1,200 BHD/mo</option>
+                          <option value="2000">Up to 2,000 BHD/mo</option>
+                        </>
+                      )
+                    ) : activeTab === 'commercial' ? (
+                      isUSD ? (
+                        <>
+                          <option value="2000">Up to $2,000/mo</option>
+                          <option value="5000">Up to $5,000/mo</option>
+                          <option value="10000">Up to $10,000/mo</option>
+                          <option value="25000">Up to $25,000/mo</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="500">Up to 500 BHD</option>
+                          <option value="1000">Up to 1,000 BHD</option>
+                          <option value="2500">Up to 2,500 BHD</option>
+                          <option value="5000">Up to 5,000 BHD</option>
+                        </>
+                      )
                     ) : (
-                      <>
-                        <option value="300">Up to 300 BHD/mo</option>
-                        <option value="500">Up to 500 BHD/mo</option>
-                        <option value="800">Up to 800 BHD/mo</option>
-                        <option value="1200">Up to 1,200 BHD/mo</option>
-                        <option value="2000">Up to 2,000 BHD/mo</option>
-                      </>
-                    )
-                  ) : activeTab === 'commercial' ? (
-                    isUSD ? (
-                      <>
-                        <option value="2000">Up to $2,000/mo</option>
-                        <option value="5000">Up to $5,000/mo</option>
-                        <option value="10000">Up to $10,000/mo</option>
-                        <option value="25000">Up to $25,000/mo</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value="500">Up to 500 BHD</option>
-                        <option value="1000">Up to 1,000 BHD</option>
-                        <option value="2500">Up to 2,500 BHD</option>
-                        <option value="5000">Up to 5,000 BHD</option>
-                      </>
-                    )
-                  ) : (
-                    isUSD ? (
-                      <>
-                        <option value="350000">Up to $350,000</option>
-                        <option value="500000">Up to $500,000</option>
-                        <option value="750000">Up to $750,000</option>
-                        <option value="1000000">Up to $1,000,000</option>
-                        <option value="2000000">Up to $2,000,000</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value="60000">Up to 60,000 BHD</option>
-                        <option value="100000">Up to 100,000 BHD</option>
-                        <option value="150000">Up to 150,000 BHD</option>
-                        <option value="250000">Up to 250,000 BHD</option>
-                        <option value="500000">Up to 500,000 BHD</option>
-                      </>
-                    )
-                  )}
-                </select>
+                      isUSD ? (
+                        <>
+                          <option value="350000">Up to $350,000</option>
+                          <option value="500000">Up to $500,000</option>
+                          <option value="750000">Up to $750,000</option>
+                          <option value="1000000">Up to $1,000,000</option>
+                          <option value="2000000">Up to $2,000,000</option>
+                        </>
+                      ) : (
+                        <>
+                          <option value="60000">Up to 60,000 BHD</option>
+                          <option value="100000">Up to 100,000 BHD</option>
+                          <option value="150000">Up to 150,000 BHD</option>
+                          <option value="250000">Up to 250,000 BHD</option>
+                          <option value="500000">Up to 500,000 BHD</option>
+                        </>
+                      )
+                    )}
+                  </select>
+                  <ChevronDown size={14} className="filter-chevron" />
+                </div>
 
                 {/* Furnishing */}
-                <select
-                  className="filter-select"
-                  value={furnished}
-                  onChange={(e) => setFurnished(e.target.value)}
-                >
-                  <option value="all">Furnishing (All)</option>
-                  <option value="Furnished">Furnished</option>
-                  <option value="Semi-Furnished">Semi-Furnished</option>
-                  <option value="Unfurnished">Unfurnished</option>
-                </select>
+                <div className="filter-select-wrapper">
+                  <select
+                    className="filter-select"
+                    value={furnished}
+                    onChange={(e) => setFurnished(e.target.value)}
+                  >
+                    <option value="all">Furnishing (All)</option>
+                    <option value="Furnished">Furnished</option>
+                    <option value="Semi-Furnished">Semi-Furnished</option>
+                    <option value="Unfurnished">Unfurnished</option>
+                  </select>
+                  <ChevronDown size={14} className="filter-chevron" />
+                </div>
               </div>
             ) : (
               /* Contextual Filters for 'Find Agents' */
-              <div className="filters-row" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
-                <select
-                  className="filter-select"
-                  value={agentSpecialty}
-                  onChange={(e) => setAgentSpecialty(e.target.value)}
-                >
-                  <option value="all">Agent Specialty (All)</option>
-                  {dynamicSpecialties.map((spec) => (
-                    <option key={spec} value={spec}>
-                      {spec}
-                    </option>
-                  ))}
-                </select>
+              <div className="filters-row agents-filters">
+                <div className="filter-select-wrapper">
+                  <select
+                    className="filter-select"
+                    value={agentSpecialty}
+                    onChange={(e) => setAgentSpecialty(e.target.value)}
+                  >
+                    <option value="all">Agent Specialty (All)</option>
+                    {dynamicSpecialties.map((spec) => (
+                      <option key={spec} value={spec}>
+                        {spec}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={14} className="filter-chevron" />
+                </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.86rem', color: '#6B7280' }}>
                   <Check size={16} color="#10B981" />
@@ -612,28 +618,6 @@ export default function HeroSearch() {
             )}
           </form>
         </div>
-      </div>
-
-      {/* Bottom Area: Grand "Luxterra" Brand Watermark + "Talk to an agent" Card */}
-      <div className="hero-bottom-row">
-        <div className="hero-brand-watermark">Luxterra</div>
-
-        <Link href="/agents" className="hero-agent-card" title="Talk to a certified agent">
-          <div className="hero-agent-avatar-wrap">
-            <img
-              src={agents[0]?.photo || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80'}
-              alt="Talk to an agent"
-              className="hero-agent-avatar"
-            />
-          </div>
-          <div className="hero-agent-info">
-            <span className="hero-agent-sub">Let's help you</span>
-            <span className="hero-agent-title">Talk to an agent</span>
-          </div>
-          <div className="hero-agent-arrow-btn">
-            <ArrowRight size={16} />
-          </div>
-        </Link>
       </div>
     </section>
   );

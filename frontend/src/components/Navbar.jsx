@@ -89,12 +89,12 @@ export default function Navbar() {
       <header className="navbar">
         <div className="navbar-inner">
           {/* Brand Logo */}
-          <Link href="/" className="brand-logo" title="Baytora - Premium Real Estate">
+          <Link href="/" className="brand-logo" title="Buytora - Premium Real Estate">
             <div className="brand-icon">
-              <img src="/images/logo.png" alt="Baytora Logo" />
+              <img src="/images/logo.png" alt="Buytora Logo" />
             </div>
             <div className="brand-name">
-              Bayt<span className="brand-highlight">ora</span>
+              Buyt<span className="brand-highlight">ora</span>
             </div>
           </Link>
 
@@ -292,10 +292,10 @@ export default function Navbar() {
             <div className="drawer-header">
               <Link href="/" className="brand-logo" onClick={() => setMobileDrawerOpen(false)}>
                 <div className="brand-icon">
-                  <img src="/images/logo.png" alt="Baytora Logo" />
+                  <img src="/images/logo.png" alt="Buytora Logo" />
                 </div>
                 <div className="brand-name">
-                  Bayt<span className="brand-highlight">ora</span>
+                  Buyt<span className="brand-highlight">ora</span>
                 </div>
               </Link>
               <button 
@@ -342,7 +342,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className="drawer-logged-out-box">
-                  <div className="drawer-welcome-title">Welcome to Baytora</div>
+                  <div className="drawer-welcome-title">Welcome to Buytora</div>
                   <p className="drawer-welcome-desc">Sign in to save properties, book private viewings, or access the admin portal.</p>
                   <Link 
                     href="/login" 

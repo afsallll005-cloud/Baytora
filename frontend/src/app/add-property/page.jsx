@@ -84,10 +84,10 @@ export default function AddPropertyPage() {
     furnished: 'Furnished',
     agent: {
       name: 'Owner / Agent',
-      phone: '+1 (813) 555-0100',
-      whatsapp: '18135550100',
-      email: 'agent@baytora.com',
-      company: 'Baytora Partner Broker',
+      phone: '0000000000',
+      whatsapp: '0000000000',
+      email: 'agent@buytora.in',
+      company: 'Buytora Partner Broker',
     }
   });
 
@@ -114,7 +114,7 @@ export default function AddPropertyPage() {
           name: user.name || prev.agent.name,
           email: user.email || prev.agent.email,
           phone: user.phone || prev.agent.phone,
-          company: user.role === 'agent' ? 'Baytora Verified Broker' : 'Verified Owner / Client',
+          company: user.role === 'agent' ? 'Buytora Verified Broker' : 'Verified Owner / Client',
         }
       }));
     }
@@ -283,7 +283,7 @@ export default function AddPropertyPage() {
       {/* Page Title */}
       <div style={{ textAlign: 'center', marginBottom: 36 }}>
         <h1 style={{ fontSize: '2.3rem', fontWeight: 800, color: '#111112', letterSpacing: '-0.5px', marginBottom: 8 }}>
-          List Your Property on Baytora
+          List Your Property on Buytora
         </h1>
         <p style={{ color: 'rgba(0,0,0,0.6)', fontSize: '1rem', letterSpacing: '-0.2px' }}>
           Reach thousands of qualified buyers, tenants, and investors across Florida & international hubs.

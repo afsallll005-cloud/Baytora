@@ -9,10 +9,12 @@ export default function LocationExplorer() {
   const [cities, setCities] = useState(initialFeaturedCities);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function load() {
       try {
         const data = await fetchFeaturedCities(false);
-        if (data && data.length > 0) {
+        if (isMounted && data && data.length > 0) {
           setCities(data);
         }
       } catch (err) {
@@ -21,11 +23,21 @@ export default function LocationExplorer() {
     }
     load();
 
-    const handleSync = () => load();
+    const handleSync = () => {
+      if (isMounted) load();
+    };
+
     if (typeof window !== 'undefined') {
       window.addEventListener('featured-cities-changed', handleSync);
-      return () => window.removeEventListener('featured-cities-changed', handleSync);
+      return () => {
+        isMounted = false;
+        window.removeEventListener('featured-cities-changed', handleSync);
+      };
     }
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

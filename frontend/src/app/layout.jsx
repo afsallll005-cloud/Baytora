@@ -3,8 +3,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Baytora | Luxury Real Estate & Curated Residences',
-  description: "Bahrain's #1 Premium Property Portal ✓ Explore luxury properties for rent and sale in Manama, Al Juffair, Seef, Reef Island, and Amwaj ✓ Verified Listings: Apartments, Villas, Penthouses on Baytora.",
+  title: 'Buytora | Luxury Real Estate & Curated Residences',
+  description: "Buytora Premium Property Portal ✓ Explore luxury properties for rent and sale in Mumbai, Chennai, Ernakulam, and Delhi ✓ Verified Listings: Apartments, Villas, Penthouses on Buytora.",
   icons: {
     icon: '/favicon.ico',
   },

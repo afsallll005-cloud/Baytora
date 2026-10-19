@@ -34,9 +34,9 @@ export default function AdminAgentsPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newAgent, setNewAgent] = useState({
     name: '',
-    company: 'Baytora Partner Realty',
-    phone: '+1 (813) 555-0100',
-    whatsapp: '18135550100',
+    company: 'Buytora Partner Realty',
+    phone: '0000000000',
+    whatsapp: '0000000000',
     email: '',
     specialties: 'Waterfront Villas, Bay Residences, Luxury Rentals',
     photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=256&q=80',
@@ -97,9 +97,9 @@ export default function AdminAgentsPage() {
         setShowAddModal(false);
         setNewAgent({
           name: '',
-          company: 'Baytora Partner Realty',
-          phone: '+1 (813) 555-0100',
-          whatsapp: '18135550100',
+          company: 'Buytora Partner Realty',
+          phone: '0000000000',
+          whatsapp: '0000000000',
           email: '',
           specialties: 'Waterfront Villas, Bay Residences, Luxury Rentals',
           photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=256&q=80',
@@ -674,7 +674,7 @@ export default function AdminAgentsPage() {
                 <input
                   type="email"
                   required
-                  placeholder="agent@baytora.com"
+                  placeholder="agent@buytora.in"
                   value={newAgent.email}
                   onChange={(e) => setNewAgent({ ...newAgent, email: e.target.value })}
                   className="form-input"
